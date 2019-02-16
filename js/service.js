@@ -1,6 +1,6 @@
 const ajaxCall = (url, method, callback) => {
     const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             callback(this.responseText);
         }
@@ -18,7 +18,8 @@ const getCityName = (responseObj) => {
 
 const getCountry = (responseObj) => {
     const country = document.createElement('li');
-    country.innerHTML = `<span id="country-name"><!-- County Name --></span><img src="https://www.countryflags.io/${ responseObj.sys.country }/shiny/64.png" alt="${ responseObj.sys.country }" />`;
+    country.innerHTML = `<span id="country-name"><!-- County Name --></span><img src="https://www.countryflags.io/
+${responseObj.sys.country}/shiny/64.png" alt="${responseObj.sys.country}" />`;
     // find and replace '%country_code%' with real country code
     const url = env.COUNTRY_NAME_API_URL.replace("%country_code%", responseObj.sys.country);
 
@@ -36,7 +37,8 @@ const getCurrentTemperature = (responseObj) => {
 
 const getWeatherCondition = (responseObj) => {
     const weatherCondition = document.createElement('li');
-    weatherCondition.innerHTML = `<span>${ responseObj.weather[0].main }</span><img src="https://openweathermap.org/img/w/${ responseObj.weather[0].icon }.png" alt="${ responseObj.weather[0].main }" />`;
+    weatherCondition.innerHTML = `<span>${responseObj.weather[0].main}</span><img src="https://openweathermap.org/img/w/
+${responseObj.weather[0].icon}.png" alt="${responseObj.weather[0].main}" />`;
 
     return weatherCondition;
 };
@@ -83,6 +85,33 @@ const getWindSpeed = (responseObj) => {
     return windSpeed;
 };
 
+const forecastDayOption = (dayNumber, selected = false) => {
+    const option = document.createElement('option');
+    option.attributes.value = dayNumber;
+    if (selected) {
+        option.selected = selected;
+    }
+    option.innerHTML = `${dayNumber} days`;
+    return option;
+};
+
+const getSelectWithDayOptions = () => {
+    const daysNumber = document.createElement('select');
+    daysNumber.setAttribute('id', 'days-number');
+    daysNumber.setAttribute('name', 'days-number');
+    daysNumber.setAttribute('disabled', 'disabled');
+
+    for (let i = 1; i <= env.OPEN_WEATHER_API_FORECAST_DAYS_MAX; i++) {
+        daysNumber.appendChild(
+            forecastDayOption(
+                i,
+                env.OPEN_WEATHER_API_FORECAST_DAYS_DEFAULT === i
+            )
+        );
+    }
+    return daysNumber;
+};
+
 const getDataList = (responseObj) => {
     const list = document.createElement('ul');
 
@@ -99,4 +128,21 @@ const getDataList = (responseObj) => {
 
     return list;
 };
+
+const getForecastDataList = (responseObj, element) => {
+    const list = document.createElement('ul');
+
+    list.appendChild(getCurrentTemperature(element));
+    // list.appendChild(getWeatherCondition(responseObj));
+    list.appendChild(getMaxTemperature(element));
+    list.appendChild(getMinTemperature(element));
+    list.appendChild(getHumidity(element));
+    list.appendChild(getPressure(element));
+    list.appendChild(getWindDeg(element));
+    list.appendChild(getWindSpeed(element));
+
+    return list;
+};
+
+
 

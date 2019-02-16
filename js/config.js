@@ -1,5 +1,5 @@
 /**
- * const env - podaci za pristup API-ju podeljene po jedinicama, radi lakse manipulacije usled promena na API-ju
+ * const env - podaci za pristup API-ju podeljenI po jedinicama, radi lakse manipulacije usled promena na API-ju
  */
 const env = {
     OPEN_WEATHER_API_HOST: "https://api.openweathermap.org/",
@@ -7,10 +7,11 @@ const env = {
     OPEN_WEATHER_API_KEY: "3026857486a41b9c56b16bf4da7a81f2",
     OPEN_WEATHER_API_FORECAST_DAILY: "/forecast/daily",
     OPEN_WEATHER_API_FORECAST_FIVE_DAYS: "/forecast",
+    OPEN_WEATHER_API_FORECAST_DAYS_MAX: 16,
+    OPEN_WEATHER_API_FORECAST_DAYS_DEFAULT: 5,
     OPEN_WEATHER_API_CURRENT: "/weather",
     OPEN_WEATHER_API_UNITS_METRIC: "&units=metric",
-
-    COUNTRY_NAME_API_URL: "https://restcountries.eu/rest/v2/name/%country_code%?fullText=true",
+    COUNTRY_NAME_API_URL: "https://restcountries.eu/rest/v2/name/%country_code%?fullText=true"
 };
 
 const OPEN_WEATHER_API_BASE_PATH = `data/${env.OPEN_WEATHER_API_VERSION}`;

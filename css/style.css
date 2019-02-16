@@ -1,0 +1,7 @@
+#days-number {
+  display: none;
+}
+
+#days-number.show {
+    display: inline-block;
+}
