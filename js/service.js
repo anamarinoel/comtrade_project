@@ -85,33 +85,6 @@ const getWindSpeed = (responseObj) => {
     return windSpeed;
 };
 
-const forecastDayOption = (dayNumber, selected = false) => {
-    const option = document.createElement('option');
-    option.attributes.value = dayNumber;
-    if (selected) {
-        option.selected = selected;
-    }
-    option.innerHTML = `${dayNumber} days`;
-    return option;
-};
-
-const getSelectWithDayOptions = () => {
-    const daysNumber = document.createElement('select');
-    daysNumber.setAttribute('id', 'days-number');
-    daysNumber.setAttribute('name', 'days-number');
-    daysNumber.setAttribute('disabled', 'disabled');
-
-    for (let i = 1; i <= env.OPEN_WEATHER_API_FORECAST_DAYS_MAX; i++) {
-        daysNumber.appendChild(
-            forecastDayOption(
-                i,
-                env.OPEN_WEATHER_API_FORECAST_DAYS_DEFAULT === i
-            )
-        );
-    }
-    return daysNumber;
-};
-
 const getDataList = (responseObj) => {
     const list = document.createElement('ul');
 
