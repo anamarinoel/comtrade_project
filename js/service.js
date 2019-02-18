@@ -87,9 +87,11 @@ const getWindSpeed = (responseObj) => {
     return windSpeed;
 };
 
-const getCurentDaysName = () => {
-    const dayName = document.createElement('li');
-    dayName.innerHTML = " neki dan u nedelji";
+
+const getCurrentDayName = (day) => {
+    const dayName = document.createElement('div');
+    dayName.innerHTML = day;
+    dayName.classList.add('day-name');
 
     return dayName;
 };
@@ -111,11 +113,10 @@ const getDataList = (responseObj) => {
     return list;
 };
 
-const getForecastDataList = (responseObj, element) => {
+const getForecastDataList = (responseObj, element, day) => {
     const list = document.createElement('ul');
-    list.classList.add("days-display");
-    
-    list.appendChild(getCurentDaysName(element))
+    list.classList.add("hourly-display");
+
     list.appendChild(getCurrentTemperature(element));
     list.appendChild(getCurrentTemperature(element));
     //list.appendChild(getWeatherCondition(responseObj));

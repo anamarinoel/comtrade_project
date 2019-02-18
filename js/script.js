@@ -15,19 +15,18 @@ const handleApiForecastWeatherResponse = (responseText) => {
 
     const forecastWeatherDays = formatResponseListByDay(responseObj.list);
     let i = 1;
-    for (let key in forecastWeatherDays) {
-        if (forecastWeatherDays.hasOwnProperty(key)) {
+    for (let day in forecastWeatherDays) {
+        if (forecastWeatherDays.hasOwnProperty(day)) {
             let id = `day-${i}`;
 
-            //let day = new Date();
-            //day.setAttribute('id', 'week-day');
-            //document.getElementById('week-day').innerHTML = day.getDate();
-
             const dayContainer = document.getElementById(id);
+            dayContainer.classList.add('day-display');
+
+            dayContainer.appendChild(getCurrentDayName(day));
             i++;
 
-            forecastWeatherDays[key].map(element => {
-                dayContainer.appendChild(getForecastDataList(responseObj, element));
+            forecastWeatherDays[day].map(element => {
+                dayContainer.appendChild(getForecastDataList(responseObj, element, day));
             });
         }
     }
@@ -41,12 +40,13 @@ const formatResponseListByDay = (list) => {
     list.map(element => {
 
         let timeObj = new Date(element.dt * 1000);
+        let weekDay = handleWeekDayName(timeObj.getDay());
 
-        if (forecastWeatherDays[timeObj.getDate()] === undefined) {
-            forecastWeatherDays[timeObj.getDate()] = [];
+        if (forecastWeatherDays[weekDay] === undefined) {
+            forecastWeatherDays[weekDay] = [];
         }
 
-        forecastWeatherDays[timeObj.getDate()].push(element);
+        forecastWeatherDays[weekDay].push(element);
     });
 
     return forecastWeatherDays;
@@ -75,14 +75,8 @@ const handleFullCountryApiResponse = (responseText) => {
 };
 
 
+const handleWeekDayName = (day) => {
+    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-const handleWeekDayName = (responseText) => {
-    
-    const weekDayName = new Date();
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    console.log('test');
-    weekDay.setAttribute('id', 'week-day');
-    document.getElementById("week-day").innerHTML = weekDayName.getDate();
-    
-    handleWeekDayName();
+    return dayNames[day];
 };

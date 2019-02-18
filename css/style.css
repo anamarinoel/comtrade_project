@@ -42,3 +42,10 @@ ul {
   color: blue;
 }
 
+.day-display > .hourly-display {
+  display: none;
+}
+
+.day-display >  ul:nth-child(2) {
+  display: block !important;
+}
