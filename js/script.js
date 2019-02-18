@@ -17,7 +17,12 @@ const handleApiForecastWeatherResponse = (responseText) => {
     let i = 1;
     for (let key in forecastWeatherDays) {
         if (forecastWeatherDays.hasOwnProperty(key)) {
-            let id = `day-${ i }`;
+            let id = `day-${i}`;
+
+            //let day = new Date();
+            //day.setAttribute('id', 'week-day');
+            //document.getElementById('week-day').innerHTML = day.getDate();
+
             const dayContainer = document.getElementById(id);
             i++;
 
@@ -34,6 +39,7 @@ const formatResponseListByDay = (list) => {
     const forecastWeatherDays = {};
 
     list.map(element => {
+
         let timeObj = new Date(element.dt * 1000);
 
         if (forecastWeatherDays[timeObj.getDate()] === undefined) {
@@ -54,8 +60,8 @@ if (city) {
         handleApiCurrentWeatherResponse
     );
 
-    if(forecastWeather) {
-        ajaxCall(OPEN_WEATHER_API_URL_FORECAST +'&q=' + city,
+    if (forecastWeather) {
+        ajaxCall(OPEN_WEATHER_API_URL_FORECAST + '&q=' + city,
             "GET",
             handleApiForecastWeatherResponse
         );
@@ -66,4 +72,17 @@ const handleFullCountryApiResponse = (responseText) => {
     const responseObj = JSON.parse(responseText);
 
     document.getElementById('country-name').innerHTML = responseObj[0].name;
+};
+
+
+
+const handleWeekDayName = (responseText) => {
+    
+    const weekDayName = new Date();
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    console.log('test');
+    weekDay.setAttribute('id', 'week-day');
+    document.getElementById("week-day").innerHTML = weekDayName.getDate();
+    
+    handleWeekDayName();
 };

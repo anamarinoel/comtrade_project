@@ -1,3 +1,21 @@
+html {
+  height: 100px;
+}
+
+body {
+  font-family: Dosis, sans-serif;
+  font-size: 20px;
+  background-color:rgb(146, 197, 221);
+  color:black; 
+  text-align: center;
+}
+
+#form {
+  height: 50px;
+  margin-top: 10px;
+  padding: 6px;
+}
+
 #days-number {
   display: none;
 }
@@ -5,3 +23,22 @@
 #days-number.show {
     display: inline-block;
 }
+
+ul {
+  list-style: none;
+}
+
+
+#current-weather #current-temp {
+  text-decoration: black;
+  font-size: 30px;
+}
+
+#current-weather #max-temp {
+  color: red;  
+}
+
+#current-weather #min-temp {
+  color: blue;
+}
+

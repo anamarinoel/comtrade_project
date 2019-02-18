@@ -10,6 +10,7 @@ const ajaxCall = (url, method, callback) => {
 };
 
 const getCityName = (responseObj) => {
+    //console.log(responseObj);
     const city = document.createElement('li');
     city.innerHTML = responseObj.name;
 
@@ -30,6 +31,7 @@ ${responseObj.sys.country}/shiny/64.png" alt="${responseObj.sys.country}" />`;
 
 const getCurrentTemperature = (responseObj) => {
     const currentTemp = document.createElement('li');
+    currentTemp.setAttribute('id', 'current-temp');
     currentTemp.innerHTML = responseObj.main.temp + ' &#8451;';
 
     return currentTemp;
@@ -37,14 +39,14 @@ const getCurrentTemperature = (responseObj) => {
 
 const getWeatherCondition = (responseObj) => {
     const weatherCondition = document.createElement('li');
-    weatherCondition.innerHTML = `<span>${responseObj.weather[0].main}</span><img src="https://openweathermap.org/img/w/
-${responseObj.weather[0].icon}.png" alt="${responseObj.weather[0].main}" />`;
+    weatherCondition.innerHTML = `<span>${responseObj.weather[0].main}</span><img src="https://openweathermap.org/img/w/${responseObj.weather[0].icon}.png" alt="${responseObj.weather[0].main}" />`;
 
     return weatherCondition;
 };
 
 const getMaxTemperature = (responseObj) => {
     const maxTemp = document.createElement('li');
+    maxTemp.setAttribute('id', 'max-temp');
     maxTemp.innerHTML = responseObj.main.temp_max + ' &#8451;';
 
     return maxTemp;
@@ -52,6 +54,7 @@ const getMaxTemperature = (responseObj) => {
 
 const getMinTemperature = (responseObj) => {
     const minTemp = document.createElement('li');
+    minTemp.setAttribute('id', 'min-temp');
     minTemp.innerHTML = responseObj.main.temp_min + ' &#8451;';
 
     return minTemp;
@@ -71,12 +74,11 @@ const getPressure = (responseObj) => {
     return pressure;
 };
 
-const getWindDeg = (responseObj) => {
+/*const getWindDeg = (responseObj) => {
     const windDeg = document.createElement('li');
-    windDeg.innerHTML = responseObj.wind.deg + " nedostaje slicica";
+    windDeg.innerHTML = responseObj.wind.deg + " ";
 
-    return windDeg;
-};
+    re*/
 
 const getWindSpeed = (responseObj) => {
     const windSpeed = document.createElement('li');
@@ -85,9 +87,16 @@ const getWindSpeed = (responseObj) => {
     return windSpeed;
 };
 
+const getCurentDaysName = () => {
+    const dayName = document.createElement('li');
+    dayName.innerHTML = " neki dan u nedelji";
+
+    return dayName;
+};
+
 const getDataList = (responseObj) => {
     const list = document.createElement('ul');
-
+    
     list.appendChild(getCityName(responseObj));
     list.appendChild(getCountry(responseObj));
     list.appendChild(getCurrentTemperature(responseObj));
@@ -96,7 +105,7 @@ const getDataList = (responseObj) => {
     list.appendChild(getMinTemperature(responseObj));
     list.appendChild(getHumidity(responseObj));
     list.appendChild(getPressure(responseObj));
-    list.appendChild(getWindDeg(responseObj));
+    //list.appendChild(getWindDeg(responseObj));
     list.appendChild(getWindSpeed(responseObj));
 
     return list;
@@ -104,18 +113,23 @@ const getDataList = (responseObj) => {
 
 const getForecastDataList = (responseObj, element) => {
     const list = document.createElement('ul');
-
+    list.classList.add("days-display");
+    
+    list.appendChild(getCurentDaysName(element))
     list.appendChild(getCurrentTemperature(element));
-    // list.appendChild(getWeatherCondition(responseObj));
+    list.appendChild(getCurrentTemperature(element));
+    //list.appendChild(getWeatherCondition(responseObj));
     list.appendChild(getMaxTemperature(element));
     list.appendChild(getMinTemperature(element));
     list.appendChild(getHumidity(element));
     list.appendChild(getPressure(element));
-    list.appendChild(getWindDeg(element));
+    //list.appendChild(getWindDeg(element));
     list.appendChild(getWindSpeed(element));
 
     return list;
 };
+
+
 
 
 
