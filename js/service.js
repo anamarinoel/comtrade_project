@@ -10,7 +10,6 @@ const ajaxCall = (url, method, callback) => {
 };
 
 const getCityName = (responseObj) => {
-    //console.log(responseObj);
     const city = document.createElement('li');
     city.innerHTML = responseObj.name;
 
@@ -19,8 +18,9 @@ const getCityName = (responseObj) => {
 
 const getCountry = (responseObj) => {
     const country = document.createElement('li');
-    country.innerHTML = `<span id="country-name"><!-- County Name --></span><img src="https://www.countryflags.io/
-${responseObj.sys.country}/shiny/64.png" alt="${responseObj.sys.country}" />`;
+    document.getElementById('country').value = `${responseObj.sys.country}`;
+
+    country.innerHTML = `<span id="country-name"></span><img src="https://www.countryflags.io/${responseObj.sys.country}/shiny/64.png" alt="${responseObj.sys.country}" />`;
     // find and replace '%country_code%' with real country code
     const url = env.COUNTRY_NAME_API_URL.replace("%country_code%", responseObj.sys.country);
 
@@ -29,19 +29,19 @@ ${responseObj.sys.country}/shiny/64.png" alt="${responseObj.sys.country}" />`;
     return country;
 };
 
+const getWeatherCondition = (responseObj) => {
+    const weatherCondition = document.createElement('li');
+    weatherCondition.innerHTML = `<img src="https://openweathermap.org/img/w/${responseObj.weather[0].icon}.png" alt="${responseObj.weather[0].main}" /><span>${responseObj.weather[0].main}</span>`;
+
+    return weatherCondition;
+};
+
 const getCurrentTemperature = (responseObj) => {
     const currentTemp = document.createElement('li');
     currentTemp.setAttribute('id', 'current-temp');
     currentTemp.innerHTML = responseObj.main.temp + ' &#8451;';
 
     return currentTemp;
-};
-
-const getWeatherCondition = (responseObj) => {
-    const weatherCondition = document.createElement('li');
-    weatherCondition.innerHTML = `<span>${responseObj.weather[0].main}</span><img src="https://openweathermap.org/img/w/${responseObj.weather[0].icon}.png" alt="${responseObj.weather[0].main}" />`;
-
-    return weatherCondition;
 };
 
 const getMaxTemperature = (responseObj) => {
@@ -87,7 +87,6 @@ const getWindSpeed = (responseObj) => {
     return windSpeed;
 };
 
-
 const getCurrentDayName = (day) => {
     const dayName = document.createElement('div');
     dayName.innerHTML = day;
@@ -96,13 +95,30 @@ const getCurrentDayName = (day) => {
     return dayName;
 };
 
+/*const getCurrentDate = (date) => {
+    const dateDay = document.createElement('div');
+    dateDay.innerHTML = date;
+    dateDay.classList.add('date-name');
+
+    return dayName;
+};*/
+
+const buttonReadMore = () => {
+    const readMore = document.createElement('button');
+    readMore.setAttribute('id', 'button');
+    readMore.innerHTML = 'More details';
+
+    return readMore;
+}
+
+
 const getDataList = (responseObj) => {
     const list = document.createElement('ul');
-    
+
     list.appendChild(getCityName(responseObj));
     list.appendChild(getCountry(responseObj));
-    list.appendChild(getCurrentTemperature(responseObj));
     list.appendChild(getWeatherCondition(responseObj));
+    list.appendChild(getCurrentTemperature(responseObj));
     list.appendChild(getMaxTemperature(responseObj));
     list.appendChild(getMinTemperature(responseObj));
     list.appendChild(getHumidity(responseObj));
@@ -118,7 +134,6 @@ const getForecastDataList = (responseObj, element, day) => {
     list.classList.add("hourly-display");
 
     list.appendChild(getCurrentTemperature(element));
-    list.appendChild(getCurrentTemperature(element));
     //list.appendChild(getWeatherCondition(responseObj));
     list.appendChild(getMaxTemperature(element));
     list.appendChild(getMinTemperature(element));
@@ -126,6 +141,7 @@ const getForecastDataList = (responseObj, element, day) => {
     list.appendChild(getPressure(element));
     //list.appendChild(getWindDeg(element));
     list.appendChild(getWindSpeed(element));
+    list.appendChild(buttonReadMore(element));
 
     return list;
 };

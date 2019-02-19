@@ -4,16 +4,14 @@ html {
 
 body {
   font-family: Dosis, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   background-color:rgb(146, 197, 221);
   color:black; 
   text-align: center;
 }
 
 #form {
-  height: 50px;
-  margin-top: 10px;
-  padding: 6px;
+  margin-top: 20px;
 }
 
 #days-number {
@@ -27,7 +25,6 @@ body {
 ul {
   list-style: none;
 }
-
 
 #current-weather #current-temp {
   text-decoration: black;
@@ -48,4 +45,12 @@ ul {
 
 .day-display >  ul:nth-child(2) {
   display: block !important;
+}
+
+#general-info {
+ visibility: hidden;
+}
+
+#button {
+  font-size: 16px;
 }

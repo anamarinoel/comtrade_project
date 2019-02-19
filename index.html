@@ -14,16 +14,15 @@
 </head>
 
 <body>
-    <section class="rain">
 <div class="container">
     <div class="row">
         <div class="col-sm">
             <form id="form">
                 <input type="text" name="city" placeholder="City Name" id="city-name"/>
-                <input type="text" name="country" placeholder="Country" />
-                <input type="checkbox" name="forecast_weather" id="forecast_weather"/>
+                <input type="text" name="country" placeholder="Country" id="country"/>
+                <input type="checkbox" name="forecast_weather" id="checkedbox"/>
                 <label for="forecast_weather">Forecast Weather</label>
-                <input type="submit" name="submit" id="form-submit" />
+                <input type="submit" name="submit" id="button" />
             </form>
         </div>
     </div>
@@ -35,16 +34,15 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-2">
-            <ul> General info:
-                <br>
+        <div class="col-sm-2" id="general-info"> 
+            <ul> Days:
                 <br>
                 <li>Current:</li>
                 <li>Max Temp:</li>
                 <li>Min Tem:</li>
                 <li>Humidity:</li>
                 <li>Pressure:</li>
-                <li>Wing Deg:</li>
+                <!--<li>Wing Deg:</li>-->
                 <li>Wind speed:</li>
             </ul>
         </div>
@@ -71,6 +69,5 @@
 
 <!-- script.js se poziva na kraju, jer su mu potrebni svi spremni podaci da bi radio-->
 <script type="text/javascript"  src="js/script.js"></script>
-</section>
 </body>
 </html>

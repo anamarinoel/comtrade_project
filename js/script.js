@@ -4,16 +4,20 @@ const forecastWeather = urlParams.get('forecast_weather');
 
 const handleApiCurrentWeatherResponse = (responseText) => {
     const responseObj = JSON.parse(responseText);
-
     const currentWeather = document.getElementById("current-weather");
+
     currentWeather.appendChild(getDataList(responseObj));
 };
 
 const handleApiForecastWeatherResponse = (responseText) => {
+    document.getElementById('checkedbox').checked = true;
+    
     const responseObj = JSON.parse(responseText);
     const container = document.createElement('div');
+    document.getElementById('general-info').style.visibility = 'visible';
 
     const forecastWeatherDays = formatResponseListByDay(responseObj.list);
+   
     let i = 1;
     for (let day in forecastWeatherDays) {
         if (forecastWeatherDays.hasOwnProperty(day)) {
@@ -26,11 +30,11 @@ const handleApiForecastWeatherResponse = (responseText) => {
             i++;
 
             forecastWeatherDays[day].map(element => {
-                dayContainer.appendChild(getForecastDataList(responseObj, element, day));
+            dayContainer.appendChild(getForecastDataList(responseObj, element, day));
             });
         }
     }
-
+   
     document.body.appendChild(container);
 };
 
@@ -47,6 +51,7 @@ const formatResponseListByDay = (list) => {
         }
 
         forecastWeatherDays[weekDay].push(element);
+        console.log(weekDay);
     });
 
     return forecastWeatherDays;
@@ -60,8 +65,8 @@ if (city) {
         handleApiCurrentWeatherResponse
     );
 
-    if (forecastWeather) {
-        ajaxCall(OPEN_WEATHER_API_URL_FORECAST + '&q=' + city,
+    if (forecastWeather) {          
+       ajaxCall(OPEN_WEATHER_API_URL_FORECAST + '&q=' + city,
             "GET",
             handleApiForecastWeatherResponse
         );
@@ -72,9 +77,9 @@ const handleFullCountryApiResponse = (responseText) => {
     const responseObj = JSON.parse(responseText);
 
     document.getElementById('country-name').innerHTML = responseObj[0].name;
+
 };
-
-
+ 
 const handleWeekDayName = (day) => {
     const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
