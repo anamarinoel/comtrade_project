@@ -76,8 +76,8 @@ if (city) {
 const handleFullCountryApiResponse = (responseText) => {
     const responseObj = JSON.parse(responseText);
 
+    document.getElementById('country').value = responseObj[0].name;
     document.getElementById('country-name').innerHTML = responseObj[0].name;
-
 };
  
 const handleWeekDayName = (day) => {

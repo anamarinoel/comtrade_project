@@ -18,7 +18,6 @@ const getCityName = (responseObj) => {
 
 const getCountry = (responseObj) => {
     const country = document.createElement('li');
-    document.getElementById('country').value = `${responseObj.sys.country}`;
 
     country.innerHTML = `<span id="country-name"></span><img src="https://www.countryflags.io/${responseObj.sys.country}/shiny/64.png" alt="${responseObj.sys.country}" />`;
     // find and replace '%country_code%' with real country code
