@@ -5,9 +5,14 @@ html {
 body {
   font-family: Dosis, sans-serif;
   font-size: 18px;
+  text-align: center;
   background-color:rgb(146, 197, 221);
   color:black; 
   text-align: center;
+}
+
+#mapid { 
+  height: 250px; 
 }
 
 #form {
@@ -24,6 +29,10 @@ body {
 
 ul {
   list-style: none;
+}
+
+#current-weather {
+  height: 350px;
 }
 
 #current-weather #current-temp {
@@ -51,6 +60,7 @@ ul {
  visibility: hidden;
 }
 
-#button {
+.button {
   font-size: 16px;
 }
+

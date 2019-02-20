@@ -35,6 +35,13 @@ const getWeatherCondition = (responseObj) => {
     return weatherCondition;
 };
 
+const getForecasWeatherCondition = (element) => {
+    const weatherForecastCondition = document.createElement('li');
+    weatherForecastCondition.innerHTML = `<img src="https://openweathermap.org/img/w/${element.weather[0].icon}.png" alt="${element.weather[0].main}" />`;
+ 
+    return weatherForecastCondition;
+};
+
 const getCurrentTemperature = (responseObj) => {
     const currentTemp = document.createElement('li');
     currentTemp.setAttribute('id', 'current-temp');
@@ -104,12 +111,11 @@ const getCurrentDayName = (day) => {
 
 const buttonReadMore = () => {
     const readMore = document.createElement('button');
-    readMore.setAttribute('id', 'button');
+    readMore.setAttribute('class', 'button');
     readMore.innerHTML = 'More details';
 
     return readMore;
 }
-
 
 const getDataList = (responseObj) => {
     const list = document.createElement('ul');
@@ -132,8 +138,8 @@ const getForecastDataList = (responseObj, element, day) => {
     const list = document.createElement('ul');
     list.classList.add("hourly-display");
 
+    list.appendChild(getForecasWeatherCondition(element));
     list.appendChild(getCurrentTemperature(element));
-    //list.appendChild(getWeatherCondition(responseObj));
     list.appendChild(getMaxTemperature(element));
     list.appendChild(getMinTemperature(element));
     list.appendChild(getHumidity(element));

@@ -7,7 +7,13 @@ const handleApiCurrentWeatherResponse = (responseText) => {
     const currentWeather = document.getElementById("current-weather");
 
     currentWeather.appendChild(getDataList(responseObj));
+    handleCityMapCoordinates(responseObj);
 };
+
+const handleCityMapCoordinates = (responseObj) => {
+    createMap([responseObj.coord.lat, responseObj.coord.lon], city);
+
+}
 
 const handleApiForecastWeatherResponse = (responseText) => {
     document.getElementById('checkedbox').checked = true;
@@ -17,12 +23,12 @@ const handleApiForecastWeatherResponse = (responseText) => {
     document.getElementById('general-info').style.visibility = 'visible';
 
     const forecastWeatherDays = formatResponseListByDay(responseObj.list);
-   
+           
     let i = 1;
     for (let day in forecastWeatherDays) {
         if (forecastWeatherDays.hasOwnProperty(day)) {
             let id = `day-${i}`;
-
+            
             const dayContainer = document.getElementById(id);
             dayContainer.classList.add('day-display');
 
@@ -51,7 +57,6 @@ const formatResponseListByDay = (list) => {
         }
 
         forecastWeatherDays[weekDay].push(element);
-        console.log(weekDay);
     });
 
     return forecastWeatherDays;

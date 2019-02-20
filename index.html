@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
 
 </head>
 
 <body>
+<div id="mapid"></div>
 <div class="container">
     <div class="row">
         <div class="col-sm">
@@ -22,7 +24,7 @@
                 <input type="text" name="country" placeholder="Country" id="country"/>
                 <input type="checkbox" name="forecast_weather" id="checkedbox"/>
                 <label for="checkedbox">Forecast Weather</label>
-                <input type="submit" name="submit" id="button" />
+                <input type="submit" name="submit" class="button" />
             </form>
         </div>
     </div>
@@ -35,7 +37,8 @@
 
     <div class="row">
         <div class="col-sm-2" id="general-info"> 
-            <ul> Days:
+            <ul> 
+                <li>Days:</li>
                 <br>
                 <li>Current:</li>
                 <li>Max Temp:</li>
@@ -63,9 +66,14 @@
         </div>
     </div>
 </div>
+<div class='main'>
+
+</div>
 
 <script type="text/javascript"  src="js/config.js"></script>
 <script type="text/javascript" src="js/service.js"></script>
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
 
 <!-- script.js se poziva na kraju, jer su mu potrebni svi spremni podaci da bi radio-->
 <script type="text/javascript"  src="js/script.js"></script>
