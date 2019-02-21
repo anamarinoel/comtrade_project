@@ -1,81 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Weather App</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Dosis"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    />
+  </head>
 
-</head>
-
-<body>
-<div id="mapid"></div>
-<div class="container">
-    <div class="row">
+  <body>
+    <div class="gray_screen">
+      <div class="moj_modal"></div>
+    </div>
+    <div id="mapid"></div>
+    <div class="container">
+      <div class="row">
         <div class="col-sm">
-            <form id="form">
-                <input type="text" name="city" placeholder="City Name" id="city-name"/>
-                <input type="text" name="country" placeholder="Country" id="country"/>
-                <input type="checkbox" name="forecast_weather" id="checkedbox"/>
-                <label for="checkedbox">Forecast Weather</label>
-                <input type="submit" name="submit" class="button" />
-            </form>
+          <form id="form">
+            <input type="text" name="city" placeholder="City Name" id="city-name" />
+            <input type="text" name="country" placeholder="Country" id="country" />
+            <input type="checkbox" name="forecast_weather" id="checkedbox" />
+            <label for="checkedbox">Forecast Weather</label>
+            <input type="submit" name="submit" class="button" />
+          </form>
         </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12" id="current-weather"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2" id="general-info">
+          <ul>
+            <li>Days:</li>
+            <br />
+            <li>Current:</li>
+            <li>Max Temp:</li>
+            <li>Min Tem:</li>
+            <li>Humidity:</li>
+            <li>Pressure:</li>
+            <!--<li>Wing Deg:</li>-->
+            <li>Wind speed:</li>
+          </ul>
+        </div>
+        <div class="col-sm-2" id="day-1"></div>
+        <div class="col-sm-2" id="day-2"></div>
+        <div class="col-sm-2" id="day-3"></div>
+        <div class="col-sm-2" id="day-4"></div>
+        <div class="col-sm-2" id="day-5"></div>
+      </div>
     </div>
+    <div class="main"></div>
 
-    <div class="row">
-        <div class="col-sm-12" id="current-weather">
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/service.js"></script>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
 
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2" id="general-info"> 
-            <ul> 
-                <li>Days:</li>
-                <br>
-                <li>Current:</li>
-                <li>Max Temp:</li>
-                <li>Min Tem:</li>
-                <li>Humidity:</li>
-                <li>Pressure:</li>
-                <!--<li>Wing Deg:</li>-->
-                <li>Wind speed:</li>
-            </ul>
-        </div>
-        <div class="col-sm-2" id="day-1">
-            
-        </div>
-        <div class="col-sm-2" id="day-2">
-            
-        </div>
-        <div class="col-sm-2" id="day-3">
-           
-        </div>
-        <div class="col-sm-2" id="day-4">
-            
-        </div>
-        <div class="col-sm-2" id="day-5">
-            
-        </div>
-    </div>
-</div>
-<div class='main'>
-
-</div>
-
-<script type="text/javascript"  src="js/config.js"></script>
-<script type="text/javascript" src="js/service.js"></script>
-<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-<script type="text/javascript" src="js/map.js"></script>
-
-<!-- script.js se poziva na kraju, jer su mu potrebni svi spremni podaci da bi radio-->
-<script type="text/javascript"  src="js/script.js"></script>
-</body>
+    <!-- script.js se poziva na kraju, jer su mu potrebni svi spremni podaci da bi radio-->
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
 </html>

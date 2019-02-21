@@ -3,16 +3,17 @@ html {
 }
 
 body {
+  position: relative;
   font-family: Dosis, sans-serif;
   font-size: 18px;
   text-align: center;
-  background-color:rgb(146, 197, 221);
-  color:black; 
+  background-color: rgb(146, 197, 221);
+  color: black;
   text-align: center;
 }
 
-#mapid { 
-  height: 250px; 
+#mapid {
+  height: 250px;
 }
 
 #form {
@@ -24,7 +25,7 @@ body {
 }
 
 #days-number.show {
-    display: inline-block;
+  display: inline-block;
 }
 
 ul {
@@ -41,26 +42,51 @@ ul {
 }
 
 #current-weather #max-temp {
-  color: red;  
+  color: red;
 }
 
 #current-weather #min-temp {
   color: blue;
 }
 
-.day-display > .hourly-display {
+/*.day-display > .hourly-display {
   display: none;
-}
+}*/
 
-.day-display >  ul:nth-child(2) {
+.day-display > ul:nth-child(2) {
   display: block !important;
 }
 
 #general-info {
- visibility: hidden;
+  visibility: hidden;
 }
+
+/*.gray_screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.moj_modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: grey;
+  width: 70vw;
+  height: 35vh;
+  z-index: 10001;
+  border-radius: 15px;
+  border: 0.5 solid #999;
+  box-shadow: 5px 2.5px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  color: white;
+}*/
 
 .button {
   font-size: 16px;
 }
-
