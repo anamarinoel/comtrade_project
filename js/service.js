@@ -93,7 +93,7 @@ const getPressure = responseObj => {
     const windDeg = document.createElement('li');
     windDeg.innerHTML = responseObj.wind.deg + " ";
 
-    re*/
+    return windDeg*/
 
 const getWindSpeed = responseObj => {
   const windSpeed = document.createElement("li");
@@ -148,8 +148,6 @@ const getForecastDataList = (responseObj, element, day) => {
   const list = document.createElement("ul");
   list.classList.add("hourly-display");
   list.classList.add(day);
-
-  console.log(day);
 
   list.appendChild(getForecasWeatherCondition(element));
   list.appendChild(getCurrentTemperature(element));

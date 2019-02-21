@@ -1,7 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const city = urlParams.get("city");
 const forecastWeather = urlParams.get("forecast_weather");
-//const hourlyDisplay = urlParams.get("hourly-display");
 
 const handleApiCurrentWeatherResponse = responseText => {
   const responseObj = JSON.parse(responseText);
@@ -30,7 +29,7 @@ const handleApiForecastWeatherResponse = responseText => {
       let id = `day-${i}`;
 
       const dayContainer = document.getElementById(id);
-      // dayContainer.classList.add("day-display");
+      dayContainer.classList.add("day-display");
 
       dayContainer.appendChild(getCurrentDayName(day));
       i++;
@@ -46,16 +45,19 @@ const handleApiForecastWeatherResponse = responseText => {
   document.body.appendChild(container);
 };
 
-const showHouryDisplay = responseObj => {
-  document.getElementById("button").addEventListener("click", function(e) {
+const showHouryDisplay = (responseText) => {
+ /* document.getElementById("button").addEventListener("click", function(e) {
     e.preventDefault();
   });
-  const hourlyDisplay = document.getElementById("hourly-display");
+  console.log(button)
+;  const responseObj = JSON.parse(responseText);
+  //document.getElementById("day-display").style.visibility = "visible";
 
   if (buttonReadMore == true) {
-    document.getElementById("hourly-display").style.display = "none";
+    //document.getElementById("day-display").style.visibility = "visible";
   }
-  return hourlyDisplay;
+  return hourlyDisplay;*/
+  console.log('ovo ne radi');
 };
 
 const formatResponseListByDay = list => {
