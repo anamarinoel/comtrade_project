@@ -61,31 +61,31 @@ ul {
   visibility: hidden;
 }
 
-/*.gray_screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  width: 100vw;
-  height: 100vh;
-  z-index: 1000;
-}
+/*.gray_screen {*/
+  /*position: fixed;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*background-color: rgba(0, 0, 0, 0.9);*/
+  /*width: 100vw;*/
+  /*height: 100vh;*/
+  /*z-index: 1000;*/
+/*}*/
 
-.moj_modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: grey;
-  width: 70vw;
-  height: 35vh;
-  z-index: 10001;
-  border-radius: 15px;
-  border: 0.5 solid #999;
-  box-shadow: 5px 2.5px rgba(0, 0, 0, 0.6);
-  text-align: center;
-  color: white;
-}*/
+/*.moj_modal {*/
+  /*position: fixed;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*transform: translate(-50%, -50%);*/
+  /*background-color: grey;*/
+  /*width: 70vw;*/
+  /*height: 35vh;*/
+  /*z-index: 10001;*/
+  /*border-radius: 15px;*/
+  /*border: 1px solid #999;*/
+  /*box-shadow: 5px 2.5px rgba(0, 0, 0, 0.6);*/
+  /*text-align: center;*/
+  /*color: white;*/
+/*}*/
 
 .button {
   font-size: 16px;
