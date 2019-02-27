@@ -35,41 +35,57 @@
       <div class="row">
         <div class="col-sm">
           <form id="form">
-            <input type="text" name="city" placeholder="City Name" id="city-name" />
-            <input type="text" name="country" placeholder="Country" id="country" />
+            <input
+              type="text"
+              name="city"
+              placeholder="City Name"
+              id="city-name"
+            />
+            <input
+              type="text"
+              name="country"
+              placeholder="Country"
+              id="country"
+            />
             <input type="checkbox" name="forecast_weather" id="checkedbox" />
             <label for="checkedbox">Forecast Weather</label>
             <input type="submit" name="submit" class="button" />
           </form>
         </div>
       </div>
-
       <div class="row">
         <div class="col-sm-12" id="current-weather"></div>
+
+        <div class=" background-wrap cloudTwo">
+          <div class="row cloud">
+            <div class="col-sm-2" id="general-info">
+              <ul>
+                <li>Days:</li>
+                <br />
+                <li>Current:</li>
+                <li>Max Temp:</li>
+                <li>Min Tem:</li>
+                <li>Humidity:</li>
+                <li>Pressure:</li>
+                <!--<li>Wing Deg:</li>-->
+                <li>Wind speed:</li>
+              </ul>
+            </div>
+            <div class="col-sm-2" id="day-1"></div>
+            <div class="col-sm-2" id="day-2"></div>
+            <div class="col-sm-2" id="day-3"></div>
+            <div class="col-sm-2" id="day-4"></div>
+            <div class="col-sm-2" id="day-5"></div>
+          </div>
+        </div>
       </div>
 
-      <div class="row">
-        <div class="col-sm-2" id="general-info">
-          <ul>
-            <li>Days:</li>
-            <br />
-            <li>Current:</li>
-            <li>Max Temp:</li>
-            <li>Min Tem:</li>
-            <li>Humidity:</li>
-            <li>Pressure:</li>
-            <!--<li>Wing Deg:</li>-->
-            <li>Wind speed:</li>
-          </ul>
+      <div>
+        <div class="main cloudThree">
+          <div class="cloud"></div>
         </div>
-        <div class="col-sm-2" id="day-1"></div>
-        <div class="col-sm-2" id="day-2"></div>
-        <div class="col-sm-2" id="day-3"></div>
-        <div class="col-sm-2" id="day-4"></div>
-        <div class="col-sm-2" id="day-5"></div>
       </div>
     </div>
-    <div class="main"></div>
 
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/service.js"></script>

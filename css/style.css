@@ -7,9 +7,10 @@ body {
   font-family: Dosis, sans-serif;
   font-size: 18px;
   text-align: center;
-  background-color: rgb(146, 197, 221);
+  background-color: rgb(113, 167, 230);
   color: black;
   text-align: center;
+  overflow-x: hidden; 
 }
 
 #mapid {
@@ -90,3 +91,69 @@ ul {
 .button {
   font-size: 16px;
 }
+
+#background-wrap {
+  bottom: 0;
+  left: 0;
+  padding-top: 50px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+@-webkit-keyframes animateCloud {
+  100%{margin-left: -1000px}
+  100%{margin-left: 100%}
+}
+
+.cloudOne {
+  animation: animateCloud 35s linear infinite;
+  transform: scale(0.100s);
+}
+
+.cloudTwo {
+  animation: animateCloud 20s linear infinite;
+  transform: scale(0.100s);
+}
+.cloudThree {
+  animation: animateCloud 35s linear infinite;
+  transform: scale(0.55s);
+}
+
+.cloud {
+background-color: white;
+background: linear-gradient(top, white 5%, #f1f1f1 100%);
+filter: 
+progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#f1f1f1', GradientType=0);
+border-radius: 80%;
+box-shadow: 0 8px 5px rgba(0,0, 0, 0.1);
+position: relative;
+height: 100px;
+width: 350px;
+}
+
+.cloud:after, .cloud:before {
+  background-color: white;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+.cloud:after {
+  border-radius: 50px;
+  height: 30x;
+  width: 60px;
+  left: 50px;
+  top: -50px;
+  
+}
+
+.cloud:before {
+  border-radius: 100px;
+  height: 180px;
+  width:  180px;
+  left: 50px;
+  top: -90px;
+}
+
