@@ -20,7 +20,7 @@ const handleApiForecastWeatherResponse = responseText => {
   const responseObj = JSON.parse(responseText);
   const container = document.createElement("div");
   document.getElementById("general-info").style.visibility = "visible";
-
+  
   const forecastWeatherDays = formatResponseListByDay(responseObj.list);
 
   let i = 1;
@@ -33,19 +33,12 @@ const handleApiForecastWeatherResponse = responseText => {
       if (dayContainer) {
         if (forecastWeatherDays[day].length === 8) {
           dayContainer.classList.add("day-display");
-          console.log("day", day);
+          
           dayContainer.appendChild(getCurrentDayName(day));
           i++;
 
           forecastWeatherDays[day].map((element, key) => {
-            dayContainer.appendChild(
-              getForecastDataList(
-                responseObj,
-                element,
-                day,
-                key,
-                forecastWeatherDays[day].length
-              )
+            dayContainer.appendChild(getForecastDataList(responseObj,element,day,key,forecastWeatherDays[day].length)
             );
           });
         }

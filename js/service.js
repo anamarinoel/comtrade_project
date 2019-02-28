@@ -85,7 +85,7 @@ const getHumidity = responseObj => {
 const getPressure = responseObj => {
     const pressure = document.createElement("li");
     pressure.innerHTML = responseObj.main.pressure + " hPa";
-
+;
     return pressure;
 };
 
@@ -116,6 +116,9 @@ const handleMoreDetailsButtonClick = (element, day) => {
     let showed = element.classList.contains("showed");
     const elements = document.getElementsByClassName(day);
 
+    const myModal = document.createElement("div");
+    document.getElementsByClassName("my-modal").style.display = "blok";
+
     if (showed) {
         for (let i = 0; i < elements.length; i++) {
             elements[i].style.display = "none";
@@ -123,6 +126,8 @@ const handleMoreDetailsButtonClick = (element, day) => {
 
         element.innerHTML = "More details";
         element.classList.remove('showed');
+        myModal.classList.add(showed);
+       
     } else {
         for (let i = 0; i < elements.length; i++) {
             elements[i].style.display = "block";
@@ -132,6 +137,14 @@ const handleMoreDetailsButtonClick = (element, day) => {
         element.classList.add('showed');
     }
 };
+
+/*const getHourlyWeather = day => {
+    const hourlyWeather = document.getElementById('hourly-display');
+    
+
+    console.log('hourly-display');
+    return hourlyWeather;
+};*/
 
 const getDataList = responseObj => {
     const list = document.createElement("ul");
@@ -167,3 +180,11 @@ const getForecastDataList = (responseObj, element, day, key, elementsLength) => 
 
     return list;
 };
+
+const getForecastHOurlyWeather = (responseObj) => {
+    const list = document.createElement("ul");
+    list.classList.add("my-modal");
+  
+  
+    list.appendChild(getHourlyWeather(responseObj));
+}
