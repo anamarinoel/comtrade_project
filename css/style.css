@@ -1,7 +1,3 @@
-html {
-  height: 100px;
-}
-
 body {
   position: relative;
   font-family: Dosis, sans-serif;
@@ -9,12 +5,15 @@ body {
   text-align: center;
   background-color: rgb(113, 167, 230);
   color: black;
-  text-align: center;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 #mapid {
   height: 250px;
+}
+
+img {
+  vertical-align: auto;
 }
 
 #form {
@@ -34,11 +33,11 @@ ul {
 }
 
 #current-weather {
-  height: 350px;
+  height: 400px;
 }
 
 #current-weather #current-temp {
-  text-decoration: black;
+  color: black;
   font-size: 30px;
 }
 
@@ -92,68 +91,78 @@ ul {
   font-size: 16px;
 }
 
-#background-wrap {
-  bottom: 0;
-  left: 0;
-  padding-top: 50px;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
-
 @-webkit-keyframes animateCloud {
   100%{margin-left: -1000px}
   100%{margin-left: 100%}
 }
 
-.cloudOne {
-  animation: animateCloud 35s linear infinite;
-  transform: scale(0.100s);
-}
-
-.cloudTwo {
-  animation: animateCloud 20s linear infinite;
-  transform: scale(0.100s);
-}
-.cloudThree {
-  animation: animateCloud 35s linear infinite;
-  transform: scale(0.55s);
-}
-
 .cloud {
-background-color: white;
-background: linear-gradient(top, white 5%, #f1f1f1 100%);
-filter: 
-progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#f1f1f1', GradientType=0);
-border-radius: 80%;
-/*box-shadow: 0 8px 5px rgba(0,0, 0, 0.1);*/
-position: relative;
-height: 80px;
-width: 80px;
+  background-color: white;
+  border-radius: 80%;
+  box-shadow: 2px 2px rgba(0,0, 0, 0.02);
+  position: relative;
+  height: 65px;
+  width:65px;
 }
 
 .cloud:after, .cloud:before {
+  position: absolute;
   background-color: white;
   content: '';
-  position: absolute;
   z-index: -1;
 }
 
 .cloud:after {
-  border-radius: 70px;
-  height: 90px;
-  width: 310px;
-  left: -40px;
-  top: 30px;
-  
+  position: absolute;
+  border-radius: 100px;
+  height: 52px;
+  width: 149px;
+  left: -19px;
+  top: 24px;
 }
 
 .cloud:before {
+  position: absolute;
   border-radius: 100px;
-  height: 140px;
-  width:  140px;
-  left: 140px;
-  top: -90px;
+  height: 70px;
+  width:  70px;
+  left: 39px;
+  top: -12px;
 }
+
+.cloudOne {
+  position: absolute;
+  top: 100px;
+  z-index: -100;
+  animation: animateCloud 55s linear infinite;
+}
+
+.cloudTwo {
+  position: absolute;
+  top: 300px;
+  z-index: -100;
+  animation: animateCloud 15s linear infinite;
+}
+
+.cloudThree {
+  position: absolute;
+  top: 430px;
+  z-index: -100;
+  animation: animateCloud 45s linear infinite;
+}
+
+.cloudFour {
+  position: absolute;
+  top: 600px;
+  z-index: -100;
+  animation: animateCloud 50s linear infinite;
+}
+
+.cloudFive {
+  position: absolute;
+  top: 800px;
+  z-index: -100;
+  animation: animateCloud 50s linear infinite;
+}
+
 

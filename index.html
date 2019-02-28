@@ -27,26 +27,16 @@
   </head>
 
   <body>
-    <div class="gray_screen">
+    <!--<div class="gray_screen">
       <div class="moj_modal"></div>
-    </div>
+    </div>-->
     <div id="mapid"></div>
     <div class="container">
       <div class="row">
         <div class="col-sm">
           <form id="form">
-            <input
-              type="text"
-              name="city"
-              placeholder="City Name"
-              id="city-name"
-            />
-            <input
-              type="text"
-              name="country"
-              placeholder="Country"
-              id="country"
-            />
+            <input type="text" name="city" placeholder="City Name" id="city-name" required/>
+            <input type="text" name="country" placeholder="Country" id="country" />
             <input type="checkbox" name="forecast_weather" id="checkedbox" />
             <label for="checkedbox">Forecast Weather</label>
             <input type="submit" name="submit" class="button" />
@@ -56,18 +46,17 @@
       <div class="row">
         <div class="col-sm-12" id="current-weather"></div>
 
-        <div class=" background-wrap cloudTwo">
-          <div class="row cloud">
+        <div>
+          <div class="row">
             <div class="col-sm-2" id="general-info">
               <ul>
                 <li>Days:</li>
                 <br />
                 <li>Current:</li>
-                <li>Max Temp:</li>
+                <li>Max Tem:</li>
                 <li>Min Tem:</li>
                 <li>Humidity:</li>
                 <li>Pressure:</li>
-                <!--<li>Wing Deg:</li>-->
                 <li>Wind speed:</li>
               </ul>
             </div>
@@ -75,17 +64,27 @@
             <div class="col-sm-2" id="day-2"></div>
             <div class="col-sm-2" id="day-3"></div>
             <div class="col-sm-2" id="day-4"></div>
-            <div class="col-sm-2" id="day-5"></div>
           </div>
         </div>
       </div>
 
       <div>
-        <div class="main cloudThree">
+        <div class="cloudOne">
           <div class="cloud"></div>
         </div>
-      </div>
-    </div>
+        <div class="cloudTwo">
+          <div class="cloud"></div>
+        </div>
+        <div class="cloudThree">
+          <div class="cloud"></div>
+        </div>
+        <div class="cloudFour">
+          <div class="cloud"></div>
+        </div>
+        <div class="cloudFive">
+          <div class="cloud"></div>
+        </div>
+     </div>
 
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/service.js"></script>

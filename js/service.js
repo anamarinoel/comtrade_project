@@ -89,12 +89,6 @@ const getPressure = responseObj => {
     return pressure;
 };
 
-/*const getWindDeg = (responseObj) => {
-    const windDeg = document.createElement('li');
-    windDeg.innerHTML = responseObj.wind.deg + " ";
-
-    return windDeg*/
-
 const getWindSpeed = responseObj => {
     const windSpeed = document.createElement("li");
     windSpeed.innerHTML = responseObj.wind.speed + " km/h";
@@ -109,14 +103,6 @@ const getCurrentDayName = day => {
 
     return dayName;
 };
-
-/*const getCurrentDate = (date) => {
-    const dateDay = document.createElement('div');
-    dateDay.innerHTML = date;
-    dateDay.classList.add('date-name');
-
-    return dayName;
-};*/
 
 const buttonReadMore = (day) => {
     const readMore = document.createElement("button");
@@ -158,7 +144,6 @@ const getDataList = responseObj => {
     list.appendChild(getMinTemperature(responseObj));
     list.appendChild(getHumidity(responseObj));
     list.appendChild(getPressure(responseObj));
-    //list.appendChild(getWindDeg(responseObj));
     list.appendChild(getWindSpeed(responseObj));
 
     return list;
@@ -175,7 +160,6 @@ const getForecastDataList = (responseObj, element, day, key, elementsLength) => 
     list.appendChild(getMinTemperature(element));
     list.appendChild(getHumidity(element));
     list.appendChild(getPressure(element));
-    //list.appendChild(getWindDeg(element));
     list.appendChild(getWindSpeed(element));
     if (key === 0 && elementsLength > 1) {
         list.appendChild(buttonReadMore(day));
