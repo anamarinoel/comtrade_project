@@ -127,10 +127,10 @@ background: linear-gradient(top, white 5%, #f1f1f1 100%);
 filter: 
 progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#f1f1f1', GradientType=0);
 border-radius: 80%;
-box-shadow: 0 8px 5px rgba(0,0, 0, 0.1);
+/*box-shadow: 0 8px 5px rgba(0,0, 0, 0.1);*/
 position: relative;
-height: 100px;
-width: 350px;
+height: 80px;
+width: 80px;
 }
 
 .cloud:after, .cloud:before {
@@ -141,19 +141,19 @@ width: 350px;
 }
 
 .cloud:after {
-  border-radius: 50px;
-  height: 30x;
-  width: 60px;
-  left: 50px;
-  top: -50px;
+  border-radius: 70px;
+  height: 90px;
+  width: 310px;
+  left: -40px;
+  top: 30px;
   
 }
 
 .cloud:before {
   border-radius: 100px;
-  height: 180px;
-  width:  180px;
-  left: 50px;
+  height: 140px;
+  width:  140px;
+  left: 140px;
   top: -90px;
 }
 
