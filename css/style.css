@@ -5,7 +5,6 @@ body {
   text-align: center;
   background-color: rgb(113, 167, 230);
   color: black;
-  overflow-x: hidden;
 }
 
 #mapid {
@@ -38,7 +37,7 @@ ul {
 
 #current-weather #current-temp {
   color: black;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 #current-weather #max-temp {
