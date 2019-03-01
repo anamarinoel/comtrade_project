@@ -3,6 +3,8 @@ const ajaxCall = (url, method, callback) => {
   xhttp.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
       callback(this.responseText);
+    } else if (this.readyState === 4 && this.status === 404) {
+        alert(JSON.parse(this.responseText).message);
     }
   };
   xhttp.open(method, url, true);
@@ -13,16 +15,9 @@ const getCityName = responseObj => {
   const city = document.createElement("li");
 
   if (city) {
-    city.innerHTML == responseObj.name;
-    console.log(city);
-    console.log(responseObj);
-  } /*else if {
-      responseObj.name != 
-      alert('Please write correct City name');
-  } else {
-       alert('Please check that you use corrected Caps Lock');
+    city.innerHTML = responseObj.name;
   }
-  */
+
   return city;
 };
 
@@ -134,12 +129,13 @@ const getCurrentDayName = day => {
 };
 
 const buttonReadMore = day => {
-  const readMore = document.createElement("button");
-  const myModal = document.createElement("div");
-  readMore.onclick = () => handleMoreDetailsButtonClick(readMore, day);
-  readMore.innerHTML = "More details";
+  const moreDetails = document.createElement("button");
+    moreDetails.onclick = () => handleMoreDetailsButtonClick(moreDetails, day);
+    moreDetails.innerHTML = "More details";
+    // moreDetails.setAttribute("data-toggle", "modal");
+    // moreDetails.setAttribute("data-target", "#Modal");
 
-  return readMore;
+  return moreDetails;
 };
 
 const handleMoreDetailsButtonClick = (element, day) => {

@@ -7,6 +7,10 @@ body {
   color: black;
 }
 
+.container {
+    width: 100%;
+}
+
 #mapid {
   height: 250px;
 }
