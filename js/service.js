@@ -1,26 +1,38 @@
+/**
+ * 
+ * @param {*} url 
+ * @param {*} method 
+ * @param {*} callback 
+ */
+
 const ajaxCall = (url, method, callback) => {
   const xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
       callback(this.responseText);
     } else if (this.readyState === 4 && this.status === 404) {
-        alert(JSON.parse(this.responseText).message);
+        alert('Please insert correct the name of the city');
     }
   };
   xhttp.open(method, url, true);
   xhttp.send();
 };
 
+/**
+ * 
+ * @param {*} responseObj 
+ */
 const getCityName = responseObj => {
   const city = document.createElement("li");
-
-  if (city) {
-    city.innerHTML = responseObj.name;
-  }
+  city.innerHTML = responseObj.name;
 
   return city;
 };
 
+/**
+ * 
+ * @param {*} responseObj 
+ */
 const getCountry = responseObj => {
   const country = document.createElement("li");
 
@@ -38,6 +50,10 @@ const getCountry = responseObj => {
   return country;
 };
 
+/**
+ * 
+ * @param {*} responseObj 
+ */
 const getWeatherCondition = responseObj => {
   const weatherCondition = document.createElement("li");
   weatherCondition.innerHTML = `<img src="https://openweathermap.org/img/w/${
@@ -49,6 +65,10 @@ const getWeatherCondition = responseObj => {
   return weatherCondition;
 };
 
+/**
+ * 
+ * @param {*} element 
+ */
 const getForecasWeatherCondition = element => {
   const weatherForecastCondition = document.createElement("li");
   weatherForecastCondition.innerHTML = `<img src="https://openweathermap.org/img/w/${
@@ -58,7 +78,11 @@ const getForecasWeatherCondition = element => {
   return weatherForecastCondition;
 };
 
-const getCurrentTemperature = responseObj => {
+/**
+ * 
+ * @param {*} responseObj 
+ */
+ const getCurrentTemperature = responseObj => {
   const currentTemp = document.createElement("li");
   currentTemp.setAttribute("id", "current-temp");
   currentTemp.innerHTML =
@@ -69,6 +93,10 @@ const getCurrentTemperature = responseObj => {
   return currentTemp;
 };
 
+/**
+ * 
+ * @param {*} responseObj 
+ */
 const getMaxTemperature = responseObj => {
   const maxTemp = document.createElement("li");
   maxTemp.setAttribute("id", "max-temp");
@@ -80,6 +108,10 @@ const getMaxTemperature = responseObj => {
   return maxTemp;
 };
 
+/**
+ * 
+ * @param {*} responseObj 
+ */
 const getMinTemperature = responseObj => {
   const minTemp = document.createElement("li");
   minTemp.setAttribute("id", "min-temp");
@@ -91,6 +123,10 @@ const getMinTemperature = responseObj => {
   return minTemp;
 };
 
+/**
+ * 
+ * @param {*} responseObj 
+ */
 const getHumidity = responseObj => {
   const humidity = document.createElement("li");
   humidity.innerHTML =
@@ -101,6 +137,10 @@ const getHumidity = responseObj => {
   return humidity;
 };
 
+/**
+ * 
+ * @param {*} responseObj 
+ */
 const getPressure = responseObj => {
   const pressure = document.createElement("li");
   pressure.innerHTML =
@@ -110,6 +150,10 @@ const getPressure = responseObj => {
   return pressure;
 };
 
+/**
+ * 
+ * @param {*} responseObj 
+ */
 const getWindSpeed = responseObj => {
   const windSpeed = document.createElement("li");
   windSpeed.innerHTML =
@@ -120,6 +164,10 @@ const getWindSpeed = responseObj => {
   return windSpeed;
 };
 
+/**
+ * 
+ * @param {*} day 
+ */
 const getCurrentDayName = day => {
   const dayName = document.createElement("div");
   dayName.innerHTML = day;
@@ -128,16 +176,23 @@ const getCurrentDayName = day => {
   return dayName;
 };
 
+/**
+ * 
+ * @param {*} day 
+ */
 const buttonReadMore = day => {
   const moreDetails = document.createElement("button");
     moreDetails.onclick = () => handleMoreDetailsButtonClick(moreDetails, day);
     moreDetails.innerHTML = "More details";
-    // moreDetails.setAttribute("data-toggle", "modal");
-    // moreDetails.setAttribute("data-target", "#Modal");
-
+    
   return moreDetails;
 };
 
+/**
+ * 
+ * @param {*} element 
+ * @param {*} day 
+ */
 const handleMoreDetailsButtonClick = (element, day) => {
   let showed = element.classList.contains("showed");
   const elements = document.getElementsByClassName(day);
@@ -159,27 +214,10 @@ const handleMoreDetailsButtonClick = (element, day) => {
   }
 };
 
-/*const getHourlyWeather = (element, myModal) => {
-  let hourlyWeather = element.classList.contains("hourlyWeather");
-  const elements = document.getElementsByClassName(my-modal);
-
-  if (hourlyWeather) {
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].style.display = "none";
-    }
-
-    element.innerHTML = "More Details";
-    element.classList.remove("hourlyWeather");
-  } else {
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].style.display = "block";
-    }
-
-    element.innerHTML = "my-modal";
-    element.classList.add("hourlyWeather");
-  }
-};*/
-
+/**
+ * 
+ * @param {*} responseObj 
+ */
 const getDataList = responseObj => {
   const list = document.createElement("ul");
 
@@ -196,6 +234,14 @@ const getDataList = responseObj => {
   return list;
 };
 
+/**
+ * 
+ * @param {*} responseObj 
+ * @param {*} element 
+ * @param {*} day 
+ * @param {*} key 
+ * @param {*} elementsLength 
+ */
 const getForecastDataList = (
   responseObj,
   element,
@@ -220,10 +266,3 @@ const getForecastDataList = (
 
   return list;
 };
-
-/*const getForecastHOurlyWeather = responseObj => {
-  const list = document.createElement("ul");
-  list.classList.add("my-modal");
-
-  list.appendChild(getHourlyWeather(responseObj));
-};*/

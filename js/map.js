@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {*} center 
+ * @param {*} cityName 
+ */
 const createMap = (center, cityName) => {
   var mymap = L.map("mapid").setView(center, 13);
 

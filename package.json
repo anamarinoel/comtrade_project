@@ -1,0 +1,23 @@
+{
+  "name": "comtrade_project",
+  "version": "1.0.0",
+  "description": "Weather application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anamarinoel/comtrade_project.git"
+  },
+  "author": "Ana Mari Noel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anamarinoel/comtrade_project/issues"
+  },
+  "homepage": "https://github.com/anamarinoel/comtrade_project#readme",
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "webpack": "^4.29.6"
+  }
+}

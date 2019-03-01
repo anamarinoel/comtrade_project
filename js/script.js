@@ -1,7 +1,14 @@
+/**
+ * 
+ */
 const urlParams = new URLSearchParams(window.location.search);
 const city = urlParams.get("city");
 const forecastWeather = urlParams.get("forecast_weather");
 
+/**
+ * 
+ * @param {*} responseText 
+ */
 const handleApiCurrentWeatherResponse = responseText => {
   const responseObj = JSON.parse(responseText);
   const currentWeather = document.getElementById("current-weather");
@@ -10,10 +17,18 @@ const handleApiCurrentWeatherResponse = responseText => {
   handleCityMapCoordinates(responseObj);
 };
 
+/**
+ * 
+ * @param {*} responseObj 
+ */
 const handleCityMapCoordinates = responseObj => {
   createMap([responseObj.coord.lat, responseObj.coord.lon], city);
 };
 
+/**
+ * 
+ * @param {*} responseText 
+ */
 const handleApiForecastWeatherResponse = responseText => {
   document.getElementById("checkedbox").checked = true;
 
@@ -49,6 +64,10 @@ const handleApiForecastWeatherResponse = responseText => {
   document.body.appendChild(container);
 };
 
+/**
+ * 
+ * @param {*} list 
+ */
 const formatResponseListByDay = list => {
   const forecastWeatherDays = {};
 
@@ -83,7 +102,10 @@ if (city) {
     );
   }
 }
-
+/**
+ * 
+ * @param {*} responseText 
+ */
 const handleFullCountryApiResponse = responseText => {
   const responseObj = JSON.parse(responseText);
 
@@ -91,6 +113,10 @@ const handleFullCountryApiResponse = responseText => {
   document.getElementById("country-name").innerHTML = responseObj[0].name;
 };
 
+/**
+ * 
+ * @param {*} day 
+ */
 const handleWeekDayName = day => {
   const dayNames = [
     "Sunday",
@@ -104,15 +130,3 @@ const handleWeekDayName = day => {
 
   return dayNames[day];
 };
-
-/*const randomAnimateCloud = () => {
-  let randomCloud = 0;
-  let divCount = 0;
-
-  if (randomCloud < 10) {
-    randomCloud++;
-  } else {
-    divCount ++;
-  }
-};
-*/
