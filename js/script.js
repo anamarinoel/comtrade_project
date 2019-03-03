@@ -1,7 +1,4 @@
-/**
- * 
- */
-const urlParams = new URLSearchParams(window.location.search);
+
 const city = urlParams.get("city");
 const forecastWeather = urlParams.get("forecast_weather");
 

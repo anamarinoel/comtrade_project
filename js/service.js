@@ -87,8 +87,22 @@ const getForecasWeatherCondition = element => {
   currentTemp.setAttribute("id", "current-temp");
   currentTemp.innerHTML =
     `<span style="font-size:12px">Current: </span>` +
-    responseObj.main.temp +
-    " &#8451;";
+    responseObj.main.temp + getTemperatureMark();
+
+  return currentTemp;
+};
+
+
+/**
+ *
+ * @param {*} responseObj
+ */
+const getAverageTemperature = responseObj => {
+  const currentTemp = document.createElement("li");
+  currentTemp.setAttribute("id", "current-temp");
+  currentTemp.innerHTML =
+      `<span style="font-size:12px">Average: </span>` +
+      responseObj.main.temp + getTemperatureMark();
 
   return currentTemp;
 };
@@ -102,8 +116,7 @@ const getMaxTemperature = responseObj => {
   maxTemp.setAttribute("id", "max-temp");
   maxTemp.innerHTML =
     `<span style="font-size:12px; color:black">Max: </span>` +
-    responseObj.main.temp_max +
-    " &#8451;";
+    responseObj.main.temp_max + getTemperatureMark();
 
   return maxTemp;
 };
@@ -117,8 +130,7 @@ const getMinTemperature = responseObj => {
   minTemp.setAttribute("id", "min-temp");
   minTemp.innerHTML =
     `<span style="font-size:12px; color:black">Min: </span>` +
-    responseObj.main.temp_min +
-    " &#8451;";
+    responseObj.main.temp_min + getTemperatureMark();
 
   return minTemp;
 };
@@ -180,7 +192,7 @@ const getCurrentDayName = day => {
  * 
  * @param {*} day 
  */
-const buttonReadMore = day => {
+const buttonMoreDetails = day => {
   const moreDetails = document.createElement("button");
     moreDetails.onclick = () => handleMoreDetailsButtonClick(moreDetails, day);
     moreDetails.innerHTML = "More details";
@@ -254,15 +266,15 @@ const getForecastDataList = (
   list.classList.add(day);
 
   list.appendChild(getForecasWeatherCondition(element));
-  list.appendChild(getCurrentTemperature(element));
+  list.appendChild(getAverageTemperature(element));
   list.appendChild(getMaxTemperature(element));
   list.appendChild(getMinTemperature(element));
   list.appendChild(getHumidity(element));
   list.appendChild(getPressure(element));
   list.appendChild(getWindSpeed(element));
-  if (key === 0 && elementsLength > 1) {
-    list.appendChild(buttonReadMore(day));
-  }
+  // if (key === 0 && elementsLength > 1) {
+  //   list.appendChild(buttonMoreDetails(day));
+  // }
 
   return list;
 };
