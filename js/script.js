@@ -1,10 +1,9 @@
-
 const city = urlParams.get("city");
 const forecastWeather = urlParams.get("forecast_weather");
 
 /**
- * 
- * @param {*} responseText 
+ *
+ * @param {*} responseText
  */
 const handleApiCurrentWeatherResponse = responseText => {
   const responseObj = JSON.parse(responseText);
@@ -15,16 +14,16 @@ const handleApiCurrentWeatherResponse = responseText => {
 };
 
 /**
- * 
- * @param {*} responseObj 
+ *
+ * @param {*} responseObj
  */
 const handleCityMapCoordinates = responseObj => {
   createMap([responseObj.coord.lat, responseObj.coord.lon], city);
 };
 
 /**
- * 
- * @param {*} responseText 
+ *
+ * @param {*} responseText
  */
 const handleApiForecastWeatherResponse = responseText => {
   document.getElementById("checkedbox").checked = true;
@@ -32,7 +31,7 @@ const handleApiForecastWeatherResponse = responseText => {
   const responseObj = JSON.parse(responseText);
   const container = document.createElement("div");
   document.getElementById("general-info").style.visibility = "visible";
-  
+
   const forecastWeatherDays = formatResponseListByDay(responseObj.list);
 
   let i = 1;
@@ -45,12 +44,19 @@ const handleApiForecastWeatherResponse = responseText => {
       if (dayContainer) {
         if (forecastWeatherDays[day].length === 8) {
           dayContainer.classList.add("day-display");
-          
+
           dayContainer.appendChild(getCurrentDayName(day));
           i++;
 
           forecastWeatherDays[day].map((element, key) => {
-            dayContainer.appendChild(getForecastDataList(responseObj,element,day,key,forecastWeatherDays[day].length)
+            dayContainer.appendChild(
+              getForecastDataList(
+                responseObj,
+                element,
+                day,
+                key,
+                forecastWeatherDays[day].length
+              )
             );
           });
         }
@@ -61,9 +67,24 @@ const handleApiForecastWeatherResponse = responseText => {
   document.body.appendChild(container);
 };
 
+const handleModalWeatherResponse = (day) => {
+  const modal = document.createElement("span");
+  document.getElementById("modal-id").style.visibility = "visible";
+  
+  const modalContainer = document.getElementById('modal-id');
+  
+
+  if (modal === true) {
+    modalContainer.classList.add("hourly-display");
+  }
+
+  console.log(modalContainer);
+  document.body.appendChild(modal);
+};
+
 /**
- * 
- * @param {*} list 
+ *
+ * @param {*} list
  */
 const formatResponseListByDay = list => {
   const forecastWeatherDays = {};
@@ -100,8 +121,8 @@ if (city) {
   }
 }
 /**
- * 
- * @param {*} responseText 
+ *
+ * @param {*} responseText
  */
 const handleFullCountryApiResponse = responseText => {
   const responseObj = JSON.parse(responseText);
@@ -111,8 +132,8 @@ const handleFullCountryApiResponse = responseText => {
 };
 
 /**
- * 
- * @param {*} day 
+ *
+ * @param {*} day
  */
 const handleWeekDayName = day => {
   const dayNames = [

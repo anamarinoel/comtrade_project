@@ -63,8 +63,8 @@ ul {
   visibility: hidden;
 }
 
-.my-modal {
-  position: fixed;
+#modal-id {
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -136,7 +136,7 @@ ul {
   top: 300px;
   left: 0;
   z-index: -100;
-  animation: animateCloud 15s linear infinite;
+  animation: animateCloud 50s linear infinite;
 }
 
 .cloudThree {
@@ -152,7 +152,7 @@ ul {
   top: 600px;
   left: 0;
   z-index: -100;
-  animation: animateCloud 50s linear infinite;
+  animation: animateCloud 35s linear infinite;
 }
 
 .cloudFive {

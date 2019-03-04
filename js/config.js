@@ -13,6 +13,7 @@ const env = {
 const OPEN_WEATHER_API_UNITS = `&units=${ getUnitsType() }`;
 
 
+
 const OPEN_WEATHER_API_BASE_PATH = `data/${env.OPEN_WEATHER_API_VERSION}`;
 const OPEN_WEATHER_API_QUERY_ID = `APPID=${env.OPEN_WEATHER_API_KEY}`;
 
