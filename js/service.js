@@ -73,7 +73,7 @@ const getWeatherCondition = responseObj => {
 };
 
 /**
- * Dovlaci ikonicu vremenske prilike i dodaje u novo kreiranom elementu.
+ * Dovlaci ikonicu vremenske prilike i dodaje u novo-kreiranom elementu.
  *
  * @param element
  * @returns {HTMLElement}
@@ -156,7 +156,7 @@ const getMinTemperature = responseObj => {
 };
 
 /**
- * Dodaje vlaznost temperaturu.
+ * Dodaje vlaznost vazduha.
  *
  * @param responseObj
  * @returns {HTMLElement}

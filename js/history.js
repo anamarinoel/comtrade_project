@@ -6,12 +6,10 @@ const saveToHistory = () => {
         city: localStorage.getItem('city') || '',
         country: localStorage.getItem('country') || '',
         date: Date.now(),
-        forecast: false,
-        userName: ''
+        forecast: false
     };
 
     history.push(latestRequest);
-    console.warn(history);
 
     localStorage.setItem('history', JSON.stringify(history));
 };
@@ -30,7 +28,7 @@ const renderHistoryData = () => {
     let i = history.length;
     let tableBody = document.getElementById('history-data');
     tableBody.innerHTML = '';
-
+    
     for (i >= 0; i--;) {
         const tableRow = document.createElement("tr");
 
@@ -67,7 +65,7 @@ const removeHistoryEntry = (index) => {
     let history = JSON.parse(rawHistory);
 
     history.splice(index, 1);
-
+;
     localStorage.setItem('history', JSON.stringify(history));
     renderHistoryData();
 };
