@@ -1,5 +1,5 @@
 /**
- * const env - podaci za pristup API-ju podeljenI po jedinicama, radi lakse manipulacije usled promena na API-ju
+ * const env - podaci za pristup API-ju podeljeni po jedinicama, radi lakse manipulacije usled promena na API-ju
  */
 const env = {
     OPEN_WEATHER_API_HOST: "https://api.openweathermap.org/",
@@ -18,6 +18,11 @@ const OPEN_WEATHER_API_QUERY_ID = `APPID=${env.OPEN_WEATHER_API_KEY}`;
 const OPEN_WEATHER_API_URL_BASIC = `${env.OPEN_WEATHER_API_HOST}${OPEN_WEATHER_API_BASE_PATH}`;
 const OPEN_WEATHER_API_QUERY_BASIC = `?${OPEN_WEATHER_API_QUERY_ID}${OPEN_WEATHER_API_UNITS}`;
 
+/**
+ * Lepsi nacin kreiranja duzeg stringa iz niza.
+ *
+ * @type {string}
+ */
 const OPEN_WEATHER_API_URL_CURRENT = [
     OPEN_WEATHER_API_URL_BASIC, env.OPEN_WEATHER_API_CURRENT, OPEN_WEATHER_API_QUERY_BASIC
 ].join('');

@@ -1,6 +1,22 @@
+/**
+ * Cuva vrednost grada iz search URL dela u promenljivoj.
+ *
+ * @type {string}
+ */
 const city = urlParams.get("city");
+
+/**
+ * Cuva informaciju da li je zatrazena buduca vremenska prognoza.
+ *
+ * @type {string}
+ */
 const forecastWeather = urlParams.get("forecast_weather");
 
+/**
+ * Obradjuje podatke sa servera za trenutnu prognozu
+ *
+ * @param responseText
+ */
 const handleApiCurrentWeatherResponse = responseText => {
     const responseObj = JSON.parse(responseText);
     const currentWeather = document.getElementById("current-weather");
@@ -10,10 +26,20 @@ const handleApiCurrentWeatherResponse = responseText => {
     saveToHistory();
 };
 
+/**
+ * Dodaje marker izabranog grada na mapi.
+ *
+ * @param responseObj
+ */
 const handleCityMapCoordinates = responseObj => {
     createMap([responseObj.coord.lat, responseObj.coord.lon], city);
 };
 
+/**
+ * Obradjuje podatke sa servera za buducu prognozu
+ *
+ * @param responseText
+ */
 const handleApiForecastWeatherResponse = responseText => {
     document.getElementById("checkedbox").checked = true;
 
@@ -51,6 +77,12 @@ const handleApiForecastWeatherResponse = responseText => {
     setForecastToLastEntry();
 };
 
+/**
+ * Razdvaja veliki odgovor sa servera na podatke po danima
+ * svaki dan ima 8 rezultata na po 3 sata.
+ *
+ * @param list
+ */
 const formatResponseListByDay = list => {
     const forecastWeatherDays = {};
 
@@ -68,9 +100,15 @@ const formatResponseListByDay = list => {
     return forecastWeatherDays;
 };
 
+/**
+ * Proverava da li vrednost grada postoji
+ */
 if (city) {
     document.getElementById("city-name").value = city;
 
+    /**
+     * Poziva API i dovlaci podatke za trenutnu prognozu.
+     */
     ajaxCall(
         OPEN_WEATHER_API_URL_CURRENT + "&q=" + city,
         "GET",
@@ -86,6 +124,11 @@ if (city) {
     }
 }
 
+/**
+ * Dovlaci puno ime drzave na osnovu koda drzave
+ *
+ * @param responseText
+ */
 const handleFullCountryApiResponse = responseText => {
     const responseObj = JSON.parse(responseText);
 
@@ -94,6 +137,12 @@ const handleFullCountryApiResponse = responseText => {
     document.getElementById("country-name").innerHTML = responseObj[0].name;
 };
 
+/**
+ * Formatira trenutni dan u nedelji, iz broja dana vraca ime dana.
+ *
+ * @param day
+ * @returns {string}
+ */
 const handleWeekDayName = day => {
     const dayNames = [
         "Sunday",

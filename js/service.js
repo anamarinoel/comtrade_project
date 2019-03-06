@@ -1,3 +1,10 @@
+/**
+ * Globalna funkcija za API poziv
+ *
+ * @param url
+ * @param method
+ * @param callback
+ */
 const ajaxCall = (url, method, callback) => {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -11,6 +18,12 @@ const ajaxCall = (url, method, callback) => {
     xhttp.send();
 };
 
+/**
+ * Kreira novi element i u njemu dodaje ime grada.
+ *
+ * @param {Object} responseObj
+ * @returns {HTMLElement}
+ */
 const getCityName = responseObj => {
     const city = document.createElement("li");
     city.innerHTML = responseObj.name;
@@ -19,6 +32,12 @@ const getCityName = responseObj => {
     return city;
 };
 
+/**
+ * Kreira novi element i u njemu dodaje puno ime drzave i zastavu na osnovu koda drzave.
+ *
+ * @param {Object} responseObj
+ * @returns {HTMLElement}
+ */
 const getCountry = responseObj => {
     const country = document.createElement("li");
 
@@ -36,6 +55,12 @@ const getCountry = responseObj => {
     return country;
 };
 
+/**
+ * Dovlaci ikonicu vremenske prilike i dodaje u novo kreiranom elementu.
+ *
+ * @param responseObj
+ * @returns {HTMLElement}
+ */
 const getWeatherCondition = responseObj => {
     const weatherCondition = document.createElement("li");
     weatherCondition.innerHTML = `<img src="https://openweathermap.org/img/w/${
@@ -47,6 +72,12 @@ const getWeatherCondition = responseObj => {
     return weatherCondition;
 };
 
+/**
+ * Dovlaci ikonicu vremenske prilike i dodaje u novo kreiranom elementu.
+ *
+ * @param element
+ * @returns {HTMLElement}
+ */
 const getForecasWeatherCondition = element => {
     const weatherForecastCondition = document.createElement("li");
     weatherForecastCondition.innerHTML = `<img src="https://openweathermap.org/img/w/${
@@ -56,6 +87,12 @@ const getForecasWeatherCondition = element => {
     return weatherForecastCondition;
 };
 
+/**
+ * Dodaje trenutnu temperaturu.
+ *
+ * @param responseObj
+ * @returns {HTMLElement}
+ */
 const getCurrentTemperature = responseObj => {
     const currentTemp = document.createElement("li");
     currentTemp.setAttribute("id", "current-temp");
@@ -67,6 +104,12 @@ const getCurrentTemperature = responseObj => {
     return currentTemp;
 };
 
+/**
+ * Dodaje prosecnu temperaturu.
+ *
+ * @param responseObj
+ * @returns {HTMLElement}
+ */
 const getAverageTemperature = responseObj => {
     const currentTemp = document.createElement("li");
     currentTemp.setAttribute("id", "current-temp");
@@ -78,6 +121,12 @@ const getAverageTemperature = responseObj => {
     return currentTemp;
 };
 
+/**
+ * Dodaje maximalnu temperaturu.
+ *
+ * @param responseObj
+ * @returns {HTMLElement}
+ */
 const getMaxTemperature = responseObj => {
     const maxTemp = document.createElement("li");
     maxTemp.setAttribute("id", "max-temp");
@@ -89,6 +138,12 @@ const getMaxTemperature = responseObj => {
     return maxTemp;
 };
 
+/**
+ * Dodaje minimalnu temperaturu.
+ *
+ * @param responseObj
+ * @returns {HTMLElement}
+ */
 const getMinTemperature = responseObj => {
     const minTemp = document.createElement("li");
     minTemp.setAttribute("id", "min-temp");
@@ -100,6 +155,12 @@ const getMinTemperature = responseObj => {
     return minTemp;
 };
 
+/**
+ * Dodaje vlaznost temperaturu.
+ *
+ * @param responseObj
+ * @returns {HTMLElement}
+ */
 const getHumidity = responseObj => {
     const humidity = document.createElement("li");
     humidity.innerHTML =
@@ -110,6 +171,12 @@ const getHumidity = responseObj => {
     return humidity;
 };
 
+/**
+ * Dodaje atmosferski pritisak.
+ *
+ * @param responseObj
+ * @returns {HTMLElement}
+ */
 const getPressure = responseObj => {
     const pressure = document.createElement("li");
     pressure.innerHTML =
@@ -119,6 +186,12 @@ const getPressure = responseObj => {
     return pressure;
 };
 
+/**
+ * Dodaje brzinu vetra.
+ *
+ * @param responseObj
+ * @returns {HTMLElement}
+ */
 const getWindSpeed = responseObj => {
     const windSpeed = document.createElement("li");
     windSpeed.innerHTML =
@@ -129,6 +202,12 @@ const getWindSpeed = responseObj => {
     return windSpeed;
 };
 
+/**
+ * Dodaje dan.
+ *
+ * @param day
+ * @returns {HTMLElement}
+ */
 const getCurrentDayName = day => {
     const dayName = document.createElement("div");
     dayName.innerHTML = day;
@@ -170,6 +249,12 @@ const getCurrentDayName = day => {
 //     }
 // };
 
+/**
+ * Kreira listu podataka za trenutnu prognozu.
+ *
+ * @param responseObj
+ * @returns {HTMLElement}
+ */
 const getDataList = responseObj => {
     const list = document.createElement("ul");
 
@@ -186,6 +271,16 @@ const getDataList = responseObj => {
     return list;
 };
 
+/**
+ * Kreira listu podataka za buducu prognozu.
+ *
+ * @param responseObj
+ * @param element
+ * @param day
+ * @param key
+ * @param elementsLength
+ * @returns {HTMLElement}
+ */
 const getForecastDataList = (responseObj, element, day, key, elementsLength) => {
     const list = document.createElement("ul");
 
