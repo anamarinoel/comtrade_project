@@ -10,17 +10,13 @@ const env = {
     COUNTRY_NAME_API_URL: "https://restcountries.eu/rest/v2/name/%country_code%?fullText=true"
 };
 
-const OPEN_WEATHER_API_UNITS = `&units=${ getUnitsType() }`;
-
-
+const OPEN_WEATHER_API_UNITS = `&units=${getUnitsType()}`;
 
 const OPEN_WEATHER_API_BASE_PATH = `data/${env.OPEN_WEATHER_API_VERSION}`;
 const OPEN_WEATHER_API_QUERY_ID = `APPID=${env.OPEN_WEATHER_API_KEY}`;
 
-
 const OPEN_WEATHER_API_URL_BASIC = `${env.OPEN_WEATHER_API_HOST}${OPEN_WEATHER_API_BASE_PATH}`;
 const OPEN_WEATHER_API_QUERY_BASIC = `?${OPEN_WEATHER_API_QUERY_ID}${OPEN_WEATHER_API_UNITS}`;
-
 
 const OPEN_WEATHER_API_URL_CURRENT = [
     OPEN_WEATHER_API_URL_BASIC, env.OPEN_WEATHER_API_CURRENT, OPEN_WEATHER_API_QUERY_BASIC

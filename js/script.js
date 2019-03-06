@@ -1,150 +1,109 @@
 const city = urlParams.get("city");
 const forecastWeather = urlParams.get("forecast_weather");
 
-/**
- *
- * @param {*} responseText
- */
 const handleApiCurrentWeatherResponse = responseText => {
-  const responseObj = JSON.parse(responseText);
-  const currentWeather = document.getElementById("current-weather");
+    const responseObj = JSON.parse(responseText);
+    const currentWeather = document.getElementById("current-weather");
 
-  currentWeather.appendChild(getDataList(responseObj));
-  handleCityMapCoordinates(responseObj);
+    currentWeather.appendChild(getDataList(responseObj));
+    handleCityMapCoordinates(responseObj);
+    saveToHistory();
 };
 
-/**
- *
- * @param {*} responseObj
- */
 const handleCityMapCoordinates = responseObj => {
-  createMap([responseObj.coord.lat, responseObj.coord.lon], city);
+    createMap([responseObj.coord.lat, responseObj.coord.lon], city);
 };
 
-/**
- *
- * @param {*} responseText
- */
 const handleApiForecastWeatherResponse = responseText => {
-  document.getElementById("checkedbox").checked = true;
+    document.getElementById("checkedbox").checked = true;
 
-  const responseObj = JSON.parse(responseText);
-  const container = document.createElement("div");
-  document.getElementById("general-info").style.visibility = "visible";
+    const responseObj = JSON.parse(responseText);
+    const container = document.createElement("div");
+    document.getElementById("general-info").style.visibility = "visible";
 
-  const forecastWeatherDays = formatResponseListByDay(responseObj.list);
+    const forecastWeatherDays = formatResponseListByDay(responseObj.list);
 
-  let i = 1;
-  for (let day in forecastWeatherDays) {
-    if (forecastWeatherDays.hasOwnProperty(day)) {
-      let id = `day-${i}`;
+    let i = 1;
+    for (let day in forecastWeatherDays) {
+        if (forecastWeatherDays.hasOwnProperty(day)) {
+            let id = `day-${i}`;
 
-      const dayContainer = document.getElementById(id);
+            const dayContainer = document.getElementById(id);
 
-      if (dayContainer) {
-        if (forecastWeatherDays[day].length === 8) {
-          dayContainer.classList.add("day-display");
+            if (dayContainer) {
+                if (forecastWeatherDays[day].length === 8) {
+                    dayContainer.classList.add("day-display");
 
-          dayContainer.appendChild(getCurrentDayName(day));
-          i++;
+                    dayContainer.appendChild(getCurrentDayName(day));
+                    i++;
 
-          forecastWeatherDays[day].map((element, key) => {
-            dayContainer.appendChild(
-              getForecastDataList(
-                responseObj,
-                element,
-                day,
-                key,
-                forecastWeatherDays[day].length
-              )
-            );
-          });
+                    forecastWeatherDays[day].map((element, key) => {
+                        dayContainer.appendChild(
+                            getForecastDataList(responseObj, element, day, key, forecastWeatherDays[day].length)
+                        );
+                    });
+                }
+            }
         }
-      }
     }
-  }
 
-  document.body.appendChild(container);
+    document.body.appendChild(container);
+    setForecastToLastEntry();
 };
 
-const handleModalWeatherResponse = (day) => {
-  const modal = document.createElement("span");
-  document.getElementById("modal-id").style.visibility = "visible";
-  
-  const modalContainer = document.getElementById('modal-id');
-  
-
-  if (modal === true) {
-    modalContainer.classList.add("hourly-display");
-  }
-
-  console.log(modalContainer);
-  document.body.appendChild(modal);
-};
-
-/**
- *
- * @param {*} list
- */
 const formatResponseListByDay = list => {
-  const forecastWeatherDays = {};
+    const forecastWeatherDays = {};
 
-  list.map(element => {
-    let timeObj = new Date(element.dt * 1000);
-    let weekDay = handleWeekDayName(timeObj.getDay());
+    list.map(element => {
+        let timeObj = new Date(element.dt * 1000);
+        let weekDay = handleWeekDayName(timeObj.getDay());
 
-    if (forecastWeatherDays[weekDay] === undefined) {
-      forecastWeatherDays[weekDay] = [];
-    }
+        if (forecastWeatherDays[weekDay] === undefined) {
+            forecastWeatherDays[weekDay] = [];
+        }
 
-    forecastWeatherDays[weekDay].push(element);
-  });
+        forecastWeatherDays[weekDay].push(element);
+    });
 
-  return forecastWeatherDays;
+    return forecastWeatherDays;
 };
 
 if (city) {
-  document.getElementById("city-name").value = city;
+    document.getElementById("city-name").value = city;
 
-  ajaxCall(
-    OPEN_WEATHER_API_URL_CURRENT + "&q=" + city,
-    "GET",
-    handleApiCurrentWeatherResponse
-  );
-
-  if (forecastWeather) {
     ajaxCall(
-      OPEN_WEATHER_API_URL_FORECAST + "&q=" + city,
-      "GET",
-      handleApiForecastWeatherResponse
+        OPEN_WEATHER_API_URL_CURRENT + "&q=" + city,
+        "GET",
+        handleApiCurrentWeatherResponse
     );
-  }
-}
-/**
- *
- * @param {*} responseText
- */
-const handleFullCountryApiResponse = responseText => {
-  const responseObj = JSON.parse(responseText);
 
-  document.getElementById("country").value = responseObj[0].name;
-  document.getElementById("country-name").innerHTML = responseObj[0].name;
+    if (forecastWeather) {
+        ajaxCall(
+            OPEN_WEATHER_API_URL_FORECAST + "&q=" + city,
+            "GET",
+            handleApiForecastWeatherResponse
+        );
+    }
+}
+
+const handleFullCountryApiResponse = responseText => {
+    const responseObj = JSON.parse(responseText);
+
+    localStorage.setItem('country', responseObj[0].name);
+    document.getElementById("country").value = responseObj[0].name;
+    document.getElementById("country-name").innerHTML = responseObj[0].name;
 };
 
-/**
- *
- * @param {*} day
- */
 const handleWeekDayName = day => {
-  const dayNames = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
+    const dayNames = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+    ];
 
-  return dayNames[day];
+    return dayNames[day];
 };
